@@ -30,6 +30,9 @@ public class NoteEdit extends Activity{
     private EditText mBodyText;
     private TextView mDateText;
     private Long mRowId;
+    private EditText edittext1;
+    private EditText edittext2;
+    private EditText edittext3;
 
     private Cursor note;
 
@@ -48,7 +51,9 @@ public class NoteEdit extends Activity{
         mTitleText = (EditText) findViewById(R.id.title);
         mBodyText = (EditText) findViewById(R.id.body);
         mDateText = (TextView) findViewById(R.id.notelist_date);
-
+        edittext1=(EditText)findViewById(R.id.edt1);
+        edittext2=(EditText)findViewById(R.id.edt2);
+        edittext3=(EditText)findViewById(R.id.edt3);
         long msTime = System.currentTimeMillis();  
         Date curDateTime = new Date(msTime);
  	
@@ -180,6 +185,9 @@ public class NoteEdit extends Activity{
 	    private void saveState() {
 	        String title = mTitleText.getText().toString();
 	        String body = mBodyText.getText().toString();
+	        String hash = edittext1.getText().toString();
+	        String hashh = edittext2.getText().toString();
+	        String hashhh= edittext3.getText().toString();
 
 	        if(mRowId == null){
 	        	long id = mDbHelper.createNote(title, body, curDate);

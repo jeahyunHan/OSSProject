@@ -53,4 +53,43 @@
 	    android:scrollbars="vertical"
 	    android:textSize="22sp" />
 
+	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginBottom="25dp" >
+
+		<TextView
+		    android:id="@+id/textView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Keyword"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+		<EditText
+		    android:id="@+id/edt1"
+		    android:layout_width="72dp"
+		    android:text="#"
+		    android:layout_height="wrap_content" >
+
+		    <requestFocus />
+		</EditText>
+
+		<EditText
+		    android:id="@+id/edt2"
+		    android:layout_width="80dp"
+		        android:text="#"
+		    android:layout_height="wrap_content"
+		    android:ems="10" />
+
+		<EditText
+		    android:id="@+id/edt3"
+		    android:layout_width="84dp"
+		        android:text="#"
+		    android:layout_height="wrap_content"
+		    android:ems="10" />
+
+	</LinearLayout>
+
 </RelativeLayout>
