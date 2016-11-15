@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+//lkkkkk
 public class NoteEdit extends Activity{
 	
 	public static int numTitle = 1;	
