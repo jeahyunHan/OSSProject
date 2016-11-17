@@ -99,7 +99,7 @@ public class NoteList extends ListActivity {
         startManagingCursor(notesCursor);
         
 
-        String[] from = new String[] { NotesDbAdapter.KEY_TITLE ,NotesDbAdapter.KEY_DATE};
+        String[] from = new String[] { NotesDbAdapter.KEY_TITLE ,NotesDbAdapter.KEY_DATE,NotesDbAdapter.KEY_HASH,NotesDbAdapter.KEY_HASHH,NotesDbAdapter.KEY_HASHHH};
         int[] to = new int[] { R.id.text1 ,R.id.date_row};
         
         // Now create an array adapter and set it to display using our row
@@ -132,5 +132,6 @@ public class NoteList extends ListActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         fillData();        
     }   
+
     
 }

@@ -28,7 +28,10 @@ public class NotesDbAdapter {
 
     public static final String KEY_TITLE = "title";
     public static final String KEY_DATE = "date";
-    public static final String KEY_BODY = "body";
+    public static final String KEY_BODY = "body";    
+    public static final String KEY_HASH = "hash";    
+    public static final String KEY_HASHH = "hashh";    
+    public static final String KEY_HASHHH = "hashhh";    
     public static final String KEY_ROWID = "_id";
 
     private static final String TAG = "NotesDbAdapter";
@@ -40,7 +43,7 @@ public class NotesDbAdapter {
      */
     private static final String DATABASE_CREATE =
         "create table notes (_id integer primary key autoincrement, "
-        + "title text not null, body text not null, date text not null);";
+        + "title text not null, body text not null, hash text not null,hashh text not null,hashhh text not null, date text not null);";
 
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "notes";
@@ -108,11 +111,14 @@ public class NotesDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createNote(String title, String body, String date) {
+    public long createNote(String title, String body,String hash,String hashh,String hashhh, String date) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
         initialValues.put(KEY_DATE, date);
+        initialValues.put(KEY_HASH, hash);
+        initialValues.put(KEY_HASHH, hashh);
+        initialValues.put(KEY_HASHHH, hashhh);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
     }
@@ -136,7 +142,7 @@ public class NotesDbAdapter {
     public Cursor fetchAllNotes() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY,KEY_DATE}, null, null, null, null, null);
+                KEY_BODY,KEY_HASH,KEY_HASHH,KEY_HASHHH,KEY_DATE}, null, null, null, null, null);
     }
 
     /**
@@ -151,7 +157,7 @@ public class NotesDbAdapter {
         Cursor mCursor =
 
             mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                    KEY_TITLE, KEY_BODY,KEY_DATE}, KEY_ROWID + "=" + rowId, null,
+                    KEY_TITLE, KEY_BODY,KEY_HASH,KEY_HASHH,KEY_HASHHH,KEY_DATE}, KEY_ROWID + "=" + rowId, null,
                     null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -170,10 +176,13 @@ public class NotesDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateNote(long rowId, String title, String body,String date) {
+    public boolean updateNote(long rowId, String title,String hash,String hashh,String hashhh,String body,String date) {
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);
         args.put(KEY_BODY, body);
+        args.put(KEY_HASH, body);
+        args.put(KEY_HASHH, hashh);
+        args.put(KEY_HASHHH,hashhh);
         
         //This lines is added for personal reason
         args.put(KEY_DATE, date);

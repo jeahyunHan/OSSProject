@@ -190,14 +190,14 @@ public class NoteEdit extends Activity{
 	        String hashhh= edittext3.getText().toString();
 
 	        if(mRowId == null){
-	        	long id = mDbHelper.createNote(title, body, curDate);
+	        	long id = mDbHelper.createNote(title, body,hash,hashh,hashhh, curDate);
 	        	if(id > 0){
 	        		mRowId = id;
 	        	}else{
 	        		Log.e("saveState","failed to create note");
 	        	}
 	        }else{
-	        	if(!mDbHelper.updateNote(mRowId, title, body, curDate)){
+	        	if(!mDbHelper.updateNote(mRowId, title, body,hash,hashh,hashhh, curDate)){
 	        		Log.e("saveState","failed to update note");
 	        	}
 	        }
@@ -212,6 +212,9 @@ public class NoteEdit extends Activity{
 	    	            note.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
 	            mBodyText.setText(note.getString(
 	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
+	            edittext1.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_HASH)));
+	            edittext2.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_HASHH)));
+	            edittext3.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_HASHHH)));
 	            curText = note.getString(
 	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY));
 	        }
