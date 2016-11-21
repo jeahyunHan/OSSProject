@@ -216,7 +216,8 @@ public class NoteEdit extends Activity{
 	            edittext2.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_HASHH)));
 	            edittext3.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_HASHHH)));
 	            curText = note.getString(
-	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY));
+	                    note.getColumnIndexOrThrow(NotesDbAdapter.KEY_DATE));
+	            
 	        }
 	    }
 

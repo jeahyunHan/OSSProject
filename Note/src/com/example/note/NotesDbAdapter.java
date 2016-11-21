@@ -176,11 +176,11 @@ public class NotesDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateNote(long rowId, String title,String hash,String hashh,String hashhh,String body,String date) {
+    public boolean updateNote(long rowId, String title,String body,String hash,String hashh,String hashhh,String date) {
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);
         args.put(KEY_BODY, body);
-        args.put(KEY_HASH, body);
+        args.put(KEY_HASH, hash);
         args.put(KEY_HASHH, hashh);
         args.put(KEY_HASHHH,hashhh);
         
