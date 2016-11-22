@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -17,7 +18,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 //lkkkkk
@@ -47,8 +50,14 @@ public class NoteEdit extends Activity{
         
         setContentView(R.layout.note_edit);
         setTitle(R.string.app_name);
-
-        mTitleText = (EditText) findViewById(R.id.title);
+        
+        String[] optionLavala=getResources().getStringArray(R.array.spinnerArray1);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,optionLavala);
+        Spinner obj=(Spinner)findViewById(R.id.spinner1);
+        obj.setAdapter(adapter);
+        
+        setSpinner(R.id.spinner1,R.array.spinnerArray1,android.R.layout.simple_spinner_dropdown_item);
+        
         mBodyText = (EditText) findViewById(R.id.body);
         mDateText = (TextView) findViewById(R.id.notelist_date);
         edittext1=(EditText)findViewById(R.id.edt1);
@@ -75,7 +84,12 @@ public class NoteEdit extends Activity{
     
     }
 	
-	  public static class LineEditText extends EditText{
+	  private void setSpinner(int spinner1, int spinnerarray1, int simpleSpinnerDropdownItem) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static class LineEditText extends EditText{
 			// we need this constructor for LayoutInflater
 			public LineEditText(Context context, AttributeSet attrs) {
 				super(context, attrs);

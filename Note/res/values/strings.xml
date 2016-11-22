@@ -3,6 +3,7 @@
 
     <string name="app_name">Note</string>
     <string name="hello_world">Hello world!</string>
+   	<string name="spinnerPrompt1">글꼴을 선택하세요</string>
     <string name="about">About</string>
     <string name="title">Title : </string>
     <string name="menu_delete">Delete Item</string>
@@ -10,5 +11,7 @@
     <string name="edit_note">Edit Note</string>
     <string name="save_menu_noteedit">Save</string>
     <string name="delete_menu_noteedit">Delete</string>
-    
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

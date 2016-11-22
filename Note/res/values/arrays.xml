@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    	<string-array name="spinnerArray1">
+    	    	<item >글골1</item>
+    	    	<item >글골2</item>
+    	    	<item >글골3</item>
+    	</string-array>
+</resources>
