@@ -34,7 +34,7 @@ public class NoteEdit extends Activity{
   private EditText edittext2;
   private EditText edittext3;
 
-  private Cursor note;
+  private Cursor note; //커서 주석
 
   private NotesDbAdapter mDbHelper;
     
