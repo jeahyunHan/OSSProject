@@ -42,7 +42,7 @@ public class NotesDbAdapter {
      * Database creation sql statement
      */
     private static final String DATABASE_CREATE =
-        "create table notes (_id integer primary key autoincrement, "
+        "create table notes (_id text primary key autoincrement, "
         + "title text not null, body text not null, hash text not null,hashh text not null,hashhh text not null, date text not null);";
 
     private static final String DATABASE_NAME = "data";
@@ -189,5 +189,27 @@ public class NotesDbAdapter {
         
         //One more parameter is added for data
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+    
+//    public String PrintData(String value){
+//    	mDbHelper = new DatabaseHelper(mCtx);
+//    	mDb = mDbHelper.getReadableDatabase();
+//    	String str = "";
+//    	
+//    	Cursor cursor = mDb.rawQuery("select * from notes where title = '"+value+"';", null);
+//    	while(cursor.moveToNext()){
+//    		str += 
+//    			cursor.getInt(0)
+//    			+ ":_id"
+//    			+ cursor.getString(1)
+//    			+ " : title "
+//    			+cursor.getString(2)
+//    			+ " : body";
+//    	}
+//    	return str;
+//    }
+    public SQLiteDatabase getReadable(){
+    	mDbHelper = new DatabaseHelper(mCtx);
+    	return mDb = mDbHelper.getReadableDatabase();
     }
 }

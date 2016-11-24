@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/notelist">
+    android:background="@drawable/notelist" >
    
     <TextView
         android:id="@+id/textViewTop"
@@ -10,6 +10,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:paddingBottom="35dp" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btmLayout"
+        android:layout_below="@+id/textViewTop"
+        android:background="#FFF9C8"
+        android:divider="#D3D3D3"
+        android:dividerHeight="1sp" 
+        android:footerDividersEnabled="true" />
 
     <LinearLayout
         android:id="@+id/btmLayout"
@@ -28,25 +39,5 @@
     	    android:background="@drawable/create_note" />
 
     </LinearLayout>
-
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textViewTop"
-        android:background="#FFF9C8"
-        android:divider="#D3D3D3"
-        android:dividerHeight="1sp"
-        android:footerDividersEnabled="true" >
-    </ListView>
-
-    <Button
-        android:id="@+id/setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@android:id/list"
-        android:layout_alignParentRight="true"
-        android:text="Setting" />
     	
 </RelativeLayout> 

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ public class NoteList extends ListActivity {
 	
 	private NotesDbAdapter mDbHelper;
 		
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -132,6 +135,5 @@ public class NoteList extends ListActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         fillData();        
     }   
-
     
 }
