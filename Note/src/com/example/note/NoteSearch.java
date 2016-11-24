@@ -70,16 +70,16 @@ public class NoteSearch extends Activity {
 	  
 				while(cursor.moveToNext()){
 					////////////////////////////////Áß°£
-//					str += 
-//			    			cursor.getInt(0)
-//			    			+ ":_id"
-//			    			+ cursor.getString(1)
-//			    			+ " : title "
-//			    			+cursor.getString(2)
-//			    			+ " : body"
-//							+cursor.getString(3)
-//							+ ":hash";
-//					te.setText(str);
+					str += 
+			    			cursor.getInt(0)
+			    			+ ":_id"
+			    			+ cursor.getString(1)
+			    			+ " : title "
+			    			+cursor.getString(2)
+			    			+ " : body"
+							+cursor.getString(3)
+							+ ":hash";
+					te.setText(str);
 					//////////////////////////////////////					
 					
 					
