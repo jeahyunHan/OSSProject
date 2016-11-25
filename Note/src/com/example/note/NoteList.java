@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-
+//작성한 노트 리스트를 띄어주기 위한 액티비티 이다.
 public class NoteList extends ListActivity {
 	
 	private static final int ACTIVITY_CREATE=0;

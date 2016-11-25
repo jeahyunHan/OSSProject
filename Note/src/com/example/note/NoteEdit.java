@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-//lkkkkk
+//본 엑티비티는 노트 작성 및 수정 화면 액티비티이다.
 public class NoteEdit extends Activity{
  
  public static int numTitle = 1;   

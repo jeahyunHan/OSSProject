@@ -1,5 +1,5 @@
 package com.example.note;
-
+//노트인포 객체 를 정의하기위한 클래스이다.
 public class NoteInfo {
 	private String title;
 
