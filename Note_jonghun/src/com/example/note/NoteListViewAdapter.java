@@ -1,5 +1,6 @@
 package com.example.note;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -12,8 +13,8 @@ public class NoteListViewAdapter extends BaseAdapter{ // 노트 리스트뷰 어댑터  (
 
 	Context context;
 	LayoutInflater inflater;
-	private List<Note> arrayList;
-	private ArrayList<Note>
+	private List<Note> noteList=null; //노트클래스 리스트 선언  null로 초기화
+	private ArrayList<Note> arrayList; //배열리스트 사용
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
