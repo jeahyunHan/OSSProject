@@ -8,7 +8,7 @@ public Note(String kEY_TITLE, String kEY_DATE) {
 	KEY_TITLE = kEY_TITLE;
 	KEY_DATE = kEY_DATE;
 }
-public String getKEY_TITLE() {
+public String getKEY_TITLE() { //  °Ù¼Â 
 	return KEY_TITLE;
 }
 public void setKEY_TITLE(String kEY_TITLE) {
