@@ -11,7 +11,7 @@
     	android:layout_marginLeft="10sp"
     	android:textSize="25sp"
     	android:hint="@string/no_title"
-   		android:id="@+id/text1"/>
+   		android:id="@+id/no_title"/>
 	
 	<TextView 
 	    android:layout_width="wrap_content"
