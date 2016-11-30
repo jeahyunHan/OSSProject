@@ -1,8 +1,8 @@
 package com.example.note;
 
-public class Note {
-private String KEY_TITLE;
-private String KEY_DATE;
+public class Note {  // 노트 클래스 생성
+private String KEY_TITLE; //변수선언
+private String KEY_DATE;  // 변수선언
 public Note(String kEY_TITLE, String kEY_DATE) {
 	super();
 	KEY_TITLE = kEY_TITLE;
