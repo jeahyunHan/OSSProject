@@ -15,6 +15,17 @@ public class NoteListViewAdapter extends BaseAdapter{ // 노트 리스트뷰 어댑터  (
 	LayoutInflater inflater;
 	private List<Note> noteList=null; //노트클래스 리스트 선언  null로 초기화
 	private ArrayList<Note> arrayList; //배열리스트 사용
+
+	public NoteListViewAdapter(Context context,List<Note> noteList) {
+	
+		this.context = context;
+		
+		this.noteList = noteList;
+		inflater=LayoutInflater.from(context);
+		this.arrayList = new ArrayList<Note>();
+		this.arrayList.addAll(noteList);
+	}
+
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
