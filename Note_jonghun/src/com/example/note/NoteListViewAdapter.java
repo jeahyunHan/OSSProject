@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class NoteListViewAdapter extends BaseAdapter{ // 노트 리스트뷰 어댑터 
+public class NoteListViewAdapter extends BaseAdapter{ // 노트 리스트뷰 어댑터  (( 실시간으로 검색결과를 뿌려주기위함)
+
 	Context context;
 	LayoutInflater inflater;
 	private List<Note> arrayList;
