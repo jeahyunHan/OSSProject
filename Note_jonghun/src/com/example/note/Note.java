@@ -3,7 +3,7 @@ package com.example.note;
 public class Note {  // 노트 클래스 생성
 private String KEY_TITLE; //변수선언
 private String KEY_DATE;  // 변수선언
-public Note(String kEY_TITLE, String kEY_DATE) {
+public Note(String kEY_TITLE, String kEY_DATE) { // 생성자 선언
 	super();
 	KEY_TITLE = kEY_TITLE;
 	KEY_DATE = kEY_DATE;
