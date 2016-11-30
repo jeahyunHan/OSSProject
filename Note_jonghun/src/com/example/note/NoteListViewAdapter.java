@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class NoteListViewAdapter extends BaseAdapter{
-
+public class NoteListViewAdapter extends BaseAdapter{ // ³ëÆ® ¸®½ºÆ®ºä ¾î´ðÅÍ 
 	Context context;
 	LayoutInflater inflater;
 	private List<Note> arrayList;
