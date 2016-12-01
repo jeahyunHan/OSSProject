@@ -2,8 +2,10 @@ package com.example.note;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +63,35 @@ public class NoteListViewAdapter extends BaseAdapter{ // ³ëÆ® ¸®½ºÆ®ºä ¾î´ðÅÍ  (
 			holder=(ViewHolder)view.getTag();
 		}
 		
-		return null;
+		holder.no_title.setText(note.getKEY_TITLE());
+		view.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent= new Intent(context,NoteEdit.class);;
+				context.startActivity(intent);
+			}
+		});
+		
+		return view;
 	}
+	
+	public void filter(String charText){
+		charText = charText.toLowerCase(Locale.getDefault());
+		noteList.clear();
+		if(charText.length()==0){
+			noteList.addAll(arrayList);
+		}else{
+			for(Note note : arrayList){
+				String name= context.getResources().getString(note.getKEY_TITLE());
+				if(name.toLowerCase().contains(charText)){
+					noteList.add(note);
+					
+				}
+			}
+		}
+	}
+
 	
 }
