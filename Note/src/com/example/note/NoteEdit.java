@@ -1,6 +1,7 @@
 package com.example.note;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Activity;
@@ -12,6 +13,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -33,6 +35,8 @@ public class NoteEdit extends Activity{
   private EditText edittext1;
   private EditText edittext2;
   private EditText edittext3;
+  ArrayList<String> arraylist;
+  Typeface face;
 
   private Cursor note; //커서 주석
 
@@ -47,7 +51,8 @@ public class NoteEdit extends Activity{
       
       setContentView(R.layout.note_edit);
       setTitle(R.string.app_name);
-
+      
+      //글꼴 추가중 
       mTitleText = (EditText) findViewById(R.id.title);
       mBodyText = (EditText) findViewById(R.id.body);
       mDateText = (TextView) findViewById(R.id.notelist_date);
