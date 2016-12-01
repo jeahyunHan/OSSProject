@@ -2,6 +2,12 @@ package com.example.note;
 
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Note;
+import android.text.Editable;
+import android.text.TextWatcher;
+
+import java.util.ArrayList;
+import java.util.;
+
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -22,10 +28,14 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 
 public class NoteList extends ListActivity {
-	
+	private NoteListViewAdapter adapter;
+	EditText editsearch;
 	private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
     SQLiteDatabase database;
+    ListView listView;
+    
+    List<Note> noteList;
     Cursor cursor;
     EditText searchInput;
     Button searchButton;
@@ -39,6 +49,28 @@ public class NoteList extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notelist);
+		init();
+		editsearch.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 		mDbHelper = new NotesDbAdapter (this);
 		mDbHelper.open();
 		fillData();			
@@ -56,6 +88,12 @@ public class NoteList extends ListActivity {
 		
 	}
 	
+	public void init(){
+		noteList = new List<Note>();
+		adapter=new NoteListViewAdapter(this,noteList);
+		
+		
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
