@@ -3,7 +3,6 @@ package com.example.note;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,11 +18,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 //본 엑티비티는 노트 작성 및 수정 화면 액티비티이다.
-public class NoteEdit extends Activity{
+public class NoteEdit extends Activity implements OnItemSelectedListener{
  
  public static int numTitle = 1;   
  public static String curDate = "";
@@ -35,6 +39,7 @@ public class NoteEdit extends Activity{
   private EditText edittext1;
   private EditText edittext2;
   private EditText edittext3;
+  //글꼴
   ArrayList<String> arraylist;
   Typeface face;
 
@@ -53,6 +58,20 @@ public class NoteEdit extends Activity{
       setTitle(R.string.app_name);
       
       //글꼴 추가중 
+      arraylist = new ArrayList<String>();
+      arraylist.add("MALGUN");
+      arraylist.add("MILKYWAY");
+      arraylist.add("PNH_FRIENDNET");
+      arraylist.add("RIX_STAR_N_ME");
+      //스피너 설정
+      ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arraylist);
+      Spinner sp = (Spinner)this.findViewById(R.id.spinner1);
+      sp.setPrompt("글꼴");
+      sp.setAdapter(adapter);
+      sp.setOnItemSelectedListener(this);
+	//sp.setOnItemSelectedListener(this);
+      
+      
       mTitleText = (EditText) findViewById(R.id.title);
       mBodyText = (EditText) findViewById(R.id.body);
       mDateText = (TextView) findViewById(R.id.notelist_date);
@@ -225,6 +244,19 @@ public class NoteEdit extends Activity{
              
          }
      }
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+		face = Typeface.createFromAsset(getAssets(), "fonts/"+arraylist.get(position)+".TTF");
+		mBodyText.setTypeface(face);
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }
