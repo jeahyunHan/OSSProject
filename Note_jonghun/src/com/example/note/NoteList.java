@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -59,13 +60,19 @@ public class NoteList extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.notelist_menu, menu);
-		return true;		
+		 MenuInflater inflater = getMenuInflater();
+	inflater.inflate(R.menu.notelist_menu, menu);
+  // inflater.inflate(R.menu.for_action,menu);
+		
+		 
+		return super.onCreateOptionsMenu(menu);		
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
+		
+		
+		switch (item.getItemId()) {
 	    case R.id.menu_about:
 	          
 	           AlertDialog.Builder dialog = new AlertDialog.Builder(NoteList.this);
@@ -85,11 +92,16 @@ public class NoteList extends ListActivity {
 	           });
 	           dialog.show();	           
 	           return true;
-	        
+	           case R.id.action_search:
+	        	   Intent i = new Intent(getApplicationContext(),NoteSearch.class);
+	        	   startActivity(i);
+	    
 	        default:
 	            return super.onOptionsItemSelected(item);
 	        }
-	    }
+		
+	    
+	}
 	
 	private void createNote() {
 		Intent i = new Intent(this, NoteEdit.class);

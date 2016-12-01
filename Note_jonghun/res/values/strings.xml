@@ -10,5 +10,7 @@
     <string name="edit_note">Edit Note</string>
     <string name="save_menu_noteedit">Save</string>
     <string name="delete_menu_noteedit">Delete</string>
-    
+    <string name="title_activity_note_search">NoteSearch</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
