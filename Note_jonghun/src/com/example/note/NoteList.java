@@ -111,7 +111,7 @@ public class NoteList extends ListActivity {
         
 
         String[] from = new String[] { NotesDbAdapter.KEY_TITLE ,NotesDbAdapter.KEY_DATE};
-        int[] to = new int[] { R.id.text1 ,R.id.date_row};
+        int[] to = new int[] { R.id.no_title ,R.id.date_row};
         
         // Now create an array adapter and set it to display using our row
         SimpleCursorAdapter notes =
