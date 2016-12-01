@@ -44,7 +44,7 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    android:layout_alignParentRight="true"
-	    android:layout_below="@+id/toplayout"
+	    android:layout_below="@+id/spinner1"
 	    class="com.example.note.NoteEdit$LineEditText"
 	    android:background="@android:color/transparent"
 	    android:capitalize="sentences"

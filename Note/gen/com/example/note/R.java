@@ -40,9 +40,9 @@ public final class R {
         public static final int btmLayout=0x7f090012;
         public static final int button1=0x7f090002;
         public static final int date_row=0x7f090015;
-        public static final int edt1=0x7f09000c;
-        public static final int edt2=0x7f09000d;
-        public static final int edt3=0x7f09000e;
+        public static final int edt1=0x7f09000d;
+        public static final int edt2=0x7f09000e;
+        public static final int edt3=0x7f09000f;
         public static final int id=0x7f090010;
         public static final int list=0x7f090005;
         public static final int memoBtn=0x7f090000;
@@ -52,9 +52,9 @@ public final class R {
         public static final int notelist_date=0x7f090009;
         public static final int searchBtn=0x7f090001;
         public static final int searchEdt=0x7f090004;
-        public static final int spinner1=0x7f09000f;
+        public static final int spinner1=0x7f09000b;
         public static final int text1=0x7f090014;
-        public static final int textView1=0x7f09000b;
+        public static final int textView1=0x7f09000c;
         public static final int textViewTop=0x7f090011;
         public static final int title=0x7f090008;
         public static final int title_text1=0x7f090007;
