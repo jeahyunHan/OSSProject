@@ -12,7 +12,7 @@
         android:paddingBottom="35dp" />
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/lists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btmLayout"

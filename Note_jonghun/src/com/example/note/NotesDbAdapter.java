@@ -148,6 +148,7 @@ public class NotesDbAdapter {
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
                 KEY_BODY,KEY_HASH,KEY_HASHH,KEY_HASHHH,KEY_DATE}, null, null, null, null, null);
     }
+  
 
     /**
      * Return a Cursor positioned at the note that matches the given rowId
