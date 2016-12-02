@@ -26,14 +26,13 @@ public class NoteList extends ListActivity {
 	
 	private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
-    SQLiteDatabase database;
+  //  SQLiteDatabase database;
     Cursor cursor;
-    EditText searchInput;
-    Button searchButton;
+   
 	
     private static final int DELETE_ID = Menu.FIRST;
 	private int mNoteNumber = 1;
-	ArrayAdapter<Note> noteAdapter;
+	
 	private NotesDbAdapter mDbHelper;
 		
 	@Override
@@ -43,11 +42,11 @@ public class NoteList extends ListActivity {
 		mDbHelper = new NotesDbAdapter (this);
 		mDbHelper.open();
 		fillData();			
-		database = mDbHelper.getReadable();
+//		database = mDbHelper.getReadable();
 		registerForContextMenu(getListView());
+	
 		Button addnote = (Button)findViewById(R.id.addnotebutton);
-		searchButton=(Button)findViewById(R.id.searchBtn);
-		searchInput=(EditText)findViewById(R.id.searchInput);
+	
 		addnote.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
@@ -73,28 +72,11 @@ public class NoteList extends ListActivity {
 		
 		
 		switch (item.getItemId()) {
-	    case R.id.menu_about:
-	          
-	           AlertDialog.Builder dialog = new AlertDialog.Builder(NoteList.this);
-	           dialog.setTitle("About");
-	           dialog.setMessage("Hello! I'm Heng, the creator of this application. This application is created based on learning." +
-	           		" Used it on trading or any others activity that is related to business is strictly forbidden."
-	        		   +"If there is any bug is found please freely e-mail me. "+
-	           			"\n\tedisonthk@gmail.com"
-	        		   );
-	           dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-				
-	        	   @Override
-	        	   public void onClick(DialogInterface dialog, int which) {
-	        		   dialog.cancel();
-					
-	        	   }
-	           });
-	           dialog.show();	           
-	           return true;
+	   
 	           case R.id.action_search:
 	        	   Intent i = new Intent(getApplicationContext(),NoteSearch.class);
 	        	   startActivity(i);
+	        	   return true;
 	    
 	        default:
 	            return super.onOptionsItemSelected(item);
