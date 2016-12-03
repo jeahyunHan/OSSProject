@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,7 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 //lkkkkk
-public class NoteEdit extends Activity  implements OnItemSelectedListener {
+public class NoteEdit extends Activity {
 	
 	public static int numTitle = 1;	
 	public static String curDate = "";
@@ -73,30 +74,65 @@ public class NoteEdit extends Activity  implements OnItemSelectedListener {
         arrayFontlist.add("GABRIOLA");
         arrayFontlist.add("IMPACT");
 
-       //        ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
+        arrayColorlist = new ArrayList<String>();
+        arrayColorlist.add("Black");
+        arrayColorlist.add("Red");
+       
+        arrayColorlist.add("Blue");
+        ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
         ArrayAdapter<String> Fadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayFontlist);
         
         
-//        arrayColorlist = new ArrayList<String>();
-//        arrayColorlist.add("Blue");
-//        arrayColorlist.add("Red");
-//        arrayColorlist.add("black");
         
-//        Spinner Csp = (Spinner)this.findViewById(R.id.colorspin);
-//		Csp.setPrompt("color");
-//		//力格
-//		Csp.setAdapter(Cadapter);
-//		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
+        Spinner Csp = (Spinner)this.findViewById(R.id.colorspin);
+		Csp.setPrompt("color");
+		//力格
+		Csp.setAdapter(Cadapter);
+		Csp.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				// TODO Auto-generated method stub
+				if(arrayColorlist.get(position) == "Black"){
+					mBodyText.setTextColor(Color.BLACK);
+				}else if(arrayColorlist.get(position) == "Red"){
+					mBodyText.setTextColor(Color.RED);
+				}else if(arrayColorlist.get(position) == "Blue"){
+					mBodyText.setTextColor(Color.BLUE);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		
 		
         Spinner Fsp = (Spinner)this.findViewById(R.id.fontspin);
-		Fsp.setPrompt("face");
+		Fsp.setPrompt("font");
 		//力格
 		Fsp.setAdapter(Fadapter);
-		Fsp.setOnItemSelectedListener(this);
+		Fsp.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-        
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				face = Typeface.createFromAsset(getAssets(), "fonts/"+arrayFontlist.get(position)+".TTF");
+				mBodyText.setTypeface(face);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
         
         long msTime = System.currentTimeMillis();  
         Date curDateTime = new Date(msTime);
@@ -117,12 +153,7 @@ public class NoteEdit extends Activity  implements OnItemSelectedListener {
 
         populateFields();
         
-        
-//		Csp.setAdapter(Cadapter);
-//		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
-		
-		Fsp.setAdapter(Fadapter);
-		Fsp.setOnItemSelectedListener((OnItemSelectedListener) this);
+ 
         
         
     }
@@ -272,18 +303,5 @@ public class NoteEdit extends Activity  implements OnItemSelectedListener {
 	            
 	        }
 	    }
-	    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-			// TODO Auto-generated method stub
-			//Toast.makeText(this, arraylist.get(position), Toast.LENGTH_LONG).show();
-			face = Typeface.createFromAsset(getAssets(), "fonts/"+arrayFontlist.get(position)+".TTF");
-			mBodyText.setTypeface(face);
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> parent) {
-			// TODO Auto-generated method stub
-			
-		}
-
 
 }
