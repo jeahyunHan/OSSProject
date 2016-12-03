@@ -1,7 +1,9 @@
 package com.example.note;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,12 +14,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 //lkkkkk
@@ -33,11 +39,16 @@ public class NoteEdit extends Activity{
     private EditText edittext1;
     private EditText edittext2;
     private EditText edittext3;
+	Typeface face;
 
+    
     private Cursor note;
 
     private NotesDbAdapter mDbHelper;
-      
+	ArrayList<String> arrayFontlist;
+	ArrayList<String> arrayColorlist;
+
+    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +65,27 @@ public class NoteEdit extends Activity{
         edittext1=(EditText)findViewById(R.id.edt1);
         edittext2=(EditText)findViewById(R.id.edt2);
         edittext3=(EditText)findViewById(R.id.edt3);
+		
+        ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
+        ArrayAdapter<String> Fadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayFontlist);
+        
+        
+        Spinner Csp = (Spinner)this.findViewById(R.id.colorspin);
+		Csp.setPrompt("color");
+		//力格
+		Csp.setAdapter(Cadapter);
+		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
+		
+		
+		Spinner Fsp = (Spinner)this.findViewById(R.id.fontspin);
+		
+		Fsp.setPrompt("font");
+		//力格
+		Fsp.setAdapter(Fadapter);
+		Fsp.setOnItemSelectedListener((OnItemSelectedListener) this);
+
+        
+        
         long msTime = System.currentTimeMillis();  
         Date curDateTime = new Date(msTime);
  	
@@ -72,7 +104,19 @@ public class NoteEdit extends Activity{
         }
 
         populateFields();
-    
+        
+        arrayFontlist = new ArrayList<String>();
+		arrayFontlist.add("MALGUN");
+		arrayFontlist.add("GABRIOLA");
+		arrayFontlist.add("IMPACT");
+        
+		Csp.setAdapter(Cadapter);
+		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
+		
+		Fsp.setAdapter(Fadapter);
+		Fsp.setOnItemSelectedListener((OnItemSelectedListener) this);
+        
+        
     }
 	
 	  public static class LineEditText extends EditText{
