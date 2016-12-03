@@ -20,14 +20,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 //lkkkkk
-public class NoteEdit extends Activity{
+public class NoteEdit extends Activity  implements OnItemSelectedListener {
 	
 	public static int numTitle = 1;	
 	public static String curDate = "";
@@ -66,23 +68,33 @@ public class NoteEdit extends Activity{
         edittext2=(EditText)findViewById(R.id.edt2);
         edittext3=(EditText)findViewById(R.id.edt3);
 		
-        ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
+        arrayFontlist = new ArrayList<String>();
+        arrayFontlist.add("MALGUN");
+        arrayFontlist.add("GABRIOLA");
+        arrayFontlist.add("IMPACT");
+
+       //        ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
         ArrayAdapter<String> Fadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayFontlist);
         
         
-        Spinner Csp = (Spinner)this.findViewById(R.id.colorspin);
-		Csp.setPrompt("color");
-		//力格
-		Csp.setAdapter(Cadapter);
-		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
+//        arrayColorlist = new ArrayList<String>();
+//        arrayColorlist.add("Blue");
+//        arrayColorlist.add("Red");
+//        arrayColorlist.add("black");
+        
+//        Spinner Csp = (Spinner)this.findViewById(R.id.colorspin);
+//		Csp.setPrompt("color");
+//		//力格
+//		Csp.setAdapter(Cadapter);
+//		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
 		
 		
-		Spinner Fsp = (Spinner)this.findViewById(R.id.fontspin);
 		
-		Fsp.setPrompt("font");
+        Spinner Fsp = (Spinner)this.findViewById(R.id.fontspin);
+		Fsp.setPrompt("face");
 		//力格
 		Fsp.setAdapter(Fadapter);
-		Fsp.setOnItemSelectedListener((OnItemSelectedListener) this);
+		Fsp.setOnItemSelectedListener(this);
 
         
         
@@ -105,13 +117,9 @@ public class NoteEdit extends Activity{
 
         populateFields();
         
-        arrayFontlist = new ArrayList<String>();
-		arrayFontlist.add("MALGUN");
-		arrayFontlist.add("GABRIOLA");
-		arrayFontlist.add("IMPACT");
         
-		Csp.setAdapter(Cadapter);
-		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
+//		Csp.setAdapter(Cadapter);
+//		Csp.setOnItemSelectedListener((OnItemSelectedListener) this);
 		
 		Fsp.setAdapter(Fadapter);
 		Fsp.setOnItemSelectedListener((OnItemSelectedListener) this);
@@ -264,6 +272,18 @@ public class NoteEdit extends Activity{
 	            
 	        }
 	    }
+	    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			// TODO Auto-generated method stub
+			//Toast.makeText(this, arraylist.get(position), Toast.LENGTH_LONG).show();
+			face = Typeface.createFromAsset(getAssets(), "fonts/"+arrayFontlist.get(position)+".TTF");
+			mBodyText.setTypeface(face);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> parent) {
+			// TODO Auto-generated method stub
+			
+		}
 
 
 }
