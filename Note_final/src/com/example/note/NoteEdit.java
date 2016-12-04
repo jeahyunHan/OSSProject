@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -50,7 +51,11 @@ public class NoteEdit extends Activity {
     private NotesDbAdapter mDbHelper;
 	ArrayList<String> arrayFontlist;
 	ArrayList<String> arrayColorlist;
+	ArrayList<String> arraySizelist;
 
+	
+
+	
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +75,23 @@ public class NoteEdit extends Activity {
         edittext3=(EditText)findViewById(R.id.edt3);
 		
         arrayFontlist = new ArrayList<String>();
-        arrayFontlist.add("MALGUN");
-        arrayFontlist.add("GABRIOLA");
-        arrayFontlist.add("IMPACT");
+        arrayFontlist.add("HYBSRB");
+        arrayFontlist.add("HYSANB");
+        arrayFontlist.add("HYSNRL");
 
         arrayColorlist = new ArrayList<String>();
         arrayColorlist.add("Black");
         arrayColorlist.add("Red");
-       
         arrayColorlist.add("Blue");
+        
+        arraySizelist = new ArrayList<String>();
+        arraySizelist.add("15");
+        arraySizelist.add("20");
+        arraySizelist.add("25");
+        
         ArrayAdapter<String> Cadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayColorlist);
         ArrayAdapter<String> Fadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayFontlist);
+        ArrayAdapter<String> Sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arraySizelist);
         
         
         
@@ -93,9 +104,9 @@ public class NoteEdit extends Activity {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
-				// TODO Auto-generated method stub
 				if(arrayColorlist.get(position) == "Black"){
-					mBodyText.setTextColor(Color.BLACK);
+				mBodyText.setTextColor(Color.BLACK);
+				
 				}else if(arrayColorlist.get(position) == "Red"){
 					mBodyText.setTextColor(Color.RED);
 				}else if(arrayColorlist.get(position) == "Blue"){
@@ -132,8 +143,32 @@ public class NoteEdit extends Activity {
 			}
 		});
 		
+		Spinner Ssp = (Spinner) findViewById(R.id.sizespin);
+		Ssp.setPrompt("size");
 		
-        
+		Ssp.setAdapter(Sadapter);
+		Ssp.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				if(arraySizelist.get(position) == "15"){
+					mBodyText.setTextSize(15);
+				}else if(arraySizelist.get(position) == "20"){
+					mBodyText.setTextSize(20);
+				}else if(arraySizelist.get(position) == "25"){
+					mBodyText.setTextSize(25);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+
         long msTime = System.currentTimeMillis();  
         Date curDateTime = new Date(msTime);
  	
@@ -266,12 +301,15 @@ public class NoteEdit extends Activity {
 		}
 	    
 	    private void saveState() {
-	        String title = mTitleText.getText().toString();
-	        String body = mBodyText.getText().toString();
+	        SharedPreferences ppref = getSharedPreferences("save", MODE_PRIVATE);
+	    	String title = mTitleText.getText().toString();
 	        String hash = edittext1.getText().toString();
 	        String hashh = edittext2.getText().toString();
 	        String hashhh= edittext3.getText().toString();
-
+	        
+	        String body = mBodyText.getText().toString();
+//	        String body = ppref.getString("color", mBodyText.getText().toString());
+	        
 	        if(mRowId == null){
 	        	long id = mDbHelper.createNote(title, body,hash,hashh,hashhh, curDate);
 	        	if(id > 0){
