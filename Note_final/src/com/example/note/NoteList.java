@@ -2,6 +2,8 @@ package com.example.note;
 
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Note;
+
+
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -39,6 +41,9 @@ public class NoteList extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notelist);
+		startActivity(new Intent(this,SplashActivity.class));
+
+		
 		mDbHelper = new NotesDbAdapter (this);
 		mDbHelper.open();
 		fillData();			

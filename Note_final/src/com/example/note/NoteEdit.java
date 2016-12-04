@@ -44,7 +44,7 @@ public class NoteEdit extends Activity {
     private EditText edittext2;
     private EditText edittext3;
 	Typeface face;
-
+	
     
     private Cursor note;
 
@@ -54,7 +54,7 @@ public class NoteEdit extends Activity {
 	ArrayList<String> arraySizelist;
 
 	
-
+	String str = "";
 	
     
 	@Override
@@ -105,13 +105,13 @@ public class NoteEdit extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
 				if(arrayColorlist.get(position) == "Black"){
-				mBodyText.setTextColor(Color.BLACK);
-				
+					mBodyText.setTextColor(Color.BLACK);
 				}else if(arrayColorlist.get(position) == "Red"){
 					mBodyText.setTextColor(Color.RED);
 				}else if(arrayColorlist.get(position) == "Blue"){
 					mBodyText.setTextColor(Color.BLUE);
 				}
+				
 			}
 
 			@Override
@@ -301,14 +301,13 @@ public class NoteEdit extends Activity {
 		}
 	    
 	    private void saveState() {
-	        SharedPreferences ppref = getSharedPreferences("save", MODE_PRIVATE);
-	    	String title = mTitleText.getText().toString();
+	        
+	        String title = mTitleText.getText().toString();
 	        String hash = edittext1.getText().toString();
 	        String hashh = edittext2.getText().toString();
 	        String hashhh= edittext3.getText().toString();
-	        
 	        String body = mBodyText.getText().toString();
-//	        String body = ppref.getString("color", mBodyText.getText().toString());
+	        
 	        
 	        if(mRowId == null){
 	        	long id = mDbHelper.createNote(title, body,hash,hashh,hashhh, curDate);
